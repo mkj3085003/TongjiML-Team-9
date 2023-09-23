@@ -1,4 +1,4 @@
-from  preprocess.preprocess import DataPreprocessing
+from ml_regression.preprocess.preprocess import DataPreprocessing
 
 def main():
     data_path = "dataset/WorldHappiness_Corruption_2015_2020.csv"
