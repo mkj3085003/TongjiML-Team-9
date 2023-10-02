@@ -1,10 +1,14 @@
 import numpy as np
+from sklearn.preprocessing import PolynomialFeatures
 
 
 class LinearRegression:
-    def __init__(self, data, labels) -> None:
+    def __init__(self, data, labels, poly=1, include_bias=True) -> None:
+        self.poly = poly
+        self.include_bias = include_bias
+
         # 更新data
-        self.data = data
+        self.data = PolynomialFeatures(degree=self.poly, include_bias=self.include_bias).fit_transform(data)
         self.labels = labels.reshape(-1, 1)
 
         # 更新theta
@@ -44,5 +48,6 @@ class LinearRegression:
         return predictions
 
     def predict(self, data):
-        predictions = LinearRegression.hypothesis(data, self.theta)
+        data_processed = PolynomialFeatures(degree=self.poly, include_bias=self.include_bias).fit_transform(data)
+        predictions = LinearRegression.hypothesis(data_processed, self.theta)
         return predictions
