@@ -13,7 +13,7 @@ class RandomForestRegressor:
         for _ in range(self.n_estimators):
             self.forest.append(DecisionTreeRegressor(random_state=self.random_state))
 
-    def train(self, size=0.6):
+    def train(self, size=0.3):
         for i in range(self.n_estimators):
             X_reserve, X_abandon, Y_reserve, Y_abandon = train_test_split(self.data, self.labels, test_size=size,
                                                                           random_state=i * 5)
