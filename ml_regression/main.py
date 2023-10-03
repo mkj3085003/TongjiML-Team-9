@@ -4,13 +4,13 @@ import matplotlib.pyplot as plt
 
 from preprocess.preprocess import DataPreprocessing
 from model.linearRegression import LinearRegression
-from model.mlpRegression import skMlpRegression
-from model.mlpRegression import myMlpRegression
+from model.mlpRegression import MlpRegression
 # import missingno as msno #用于缺失值分析
 import numpy as np
 import torch
 import torch.utils.data as Data
 
+from preprocess.featureSelection import FeatureSelectionWithANOVA
 def main():
     data_path = "dataset/WorldHappiness_Corruption_2015_2020.csv"
     data_processor = DataPreprocessing(data_path)
@@ -27,9 +27,9 @@ def main():
     # 在这里可以继续进行模型训练和其他操作
     linear = LinearRegression(X_train.values, y_train.values)
     print(X_train.values.shape, y_train.values.shape)
-    # theta1 = linear.train(0.5, 5000)
-    theta2 = linear.fit()
-    print(theta2)
+    theta1 = linear.train(0.5, 5000)
+    # theta2 = linear.fit()
+    # print(theta2)
     # plt.plot(theta1[1])
     # plt.show()
     y_test_pred = linear.predict(X_test.values)
@@ -41,15 +41,6 @@ def main():
     # print(r2_score(y_test, y_pred))
 
     # MLP回归
-    # sklearn回归
-    sk_mlp_regr = skMlpRegression(hidden_layer_sizes=(100, 50, 25), solver='adam', random_state=1, max_iter=500)
-    sk_mlp_regr.fit(X_train, y_train)
-    sk_mlp_mse, sk_mlp_r2_score = sk_mlp_regr.evaluate(X_test, y_test)
-
-    print("The MSE value of sklearn mlp is: ", round(sk_mlp_mse, 2))
-    print("The R2 score of sklearn mlp is : ", round(sk_mlp_r2_score, 2))
-
-    # 自实现回归
     # 将数据集转化为张量
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     train_xt = torch.from_numpy(X_train.values.astype(np.float32))
@@ -61,9 +52,17 @@ def main():
     train_data = Data.TensorDataset(train_xt, train_yt)
     test_data = Data.TensorDataset(test_xt, test_yt)
     train_loader = Data.DataLoader(dataset=train_data, batch_size=64, shuffle=True, num_workers=0)
-    mlp = myMlpRegression()
-    mlp.train(train_loader)
-    mlp.test(test_xt, test_yt)
+    mlp = MlpRegression()
+    # 定义不同的优化器
+    optimizers = [
+        torch.optim.SGD(mlp.parameters(), lr=0.01),
+        torch.optim.Adam(mlp.parameters(), lr=0.01),
+        torch.optim.RMSprop(mlp.parameters(), lr=0.01)
+    ]
+    # 训练不同优化器的模型并记录损失
+    train_loss_all = mlp.train(train_loader, optimizers[0], num_epochs=500)  # 训练模型
+    print(train_loss_all)
+
 
 
 if __name__ == "__main__":

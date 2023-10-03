@@ -1,7 +1,4 @@
-import pandas as pd
-import numpy as np
 from sklearn.feature_selection import f_regression, SelectKBest
-
 
 class FeatureSelectionWithANOVA:
     def __init__(self, k=7):
