@@ -1,5 +1,5 @@
 # Machine-learning-group-assignment
-2023-2024学年同济大学机器学习小组作业
+2023-2024学年同济大学第9组机器学习小组作业
 ## ml_regression线性回归小组作业
 ### 运行说明：
   1. 使用env文件夹下的yaml文件创建conda环境:
