@@ -1,9 +1,9 @@
 # TongjiML-Team-9
 2023-2024学年同济大学机器学习第9组小组作业
-**小组成员**:
-- [mkj3085003]([https://github.com/johndoe](https://github.com/mkj3085003])
-- [Kas2023]([https://github.com/Kas2023])
-- [zx506]([https://github.com/zx506])
+**小组成员:**
+- [mkj3085003](https://github.com/mkj3085003)
+- [Kas2023](https://github.com/Kas2023)
+- [zx506](https://github.com/zx506)
 ## ml_regression线性回归分析实验
 ### 运行说明：
   1. 使用env文件夹下的yaml文件创建conda环境:
