@@ -1,2 +1,14 @@
 # Machine-learning-group-assignment
 2023-2024学年同济大学机器学习小组作业
+## ml_regression线性回归小组作业
+### 运行说明：
+  1. 使用env文件夹下的yaml文件创建conda环境:
+  conda env create -f ml_regression_env.yml
+  2. 激活Conda环境：
+  conda activate ml_regression
+  3. 将虚拟环境添加到 Jupyter Notebook 的 kernel 列表中
+  python -m ipykernel install --user --name=ml_regression
+  4. 启动 Jupyter Notebook
+  jupyter notebook（到该目录下）
+  5. 修改kernel为ml_regression
+
