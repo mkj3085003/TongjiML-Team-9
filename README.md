@@ -1,6 +1,6 @@
-# Machine-learning-group-assignment
+# TongjiML-Team-9
 2023-2024学年同济大学机器学习第9组小组作业
-## ml_regression线性回归小组作业
+## ml_regression线性回归分析实验
 ### 运行说明：
   1. 使用env文件夹下的yaml文件创建conda环境:
   conda env create -f ml_regression_env.yml
