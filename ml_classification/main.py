@@ -47,7 +47,7 @@ if __name__ == "__main__":
 
     # 预测
     # load data
-    test_X = preprocess_data(split='test', feat_dir='./libriphone/feat', phone_path='./libriphone',concat_nframes=concat_nframes)
+    test_X = preprocess_data(split='test', feat_dir='./data/libriphone/feat', phone_path='./libriphone',concat_nframes=concat_nframes)
     test_set = LibriDataset(test_X, None)
     test_loader = DataLoader(test_set, batch_size=batch_size, shuffle=False)
     test(simpleClassifier, test_loader, device, output_file='prediction.csv')
