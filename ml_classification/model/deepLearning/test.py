@@ -1,7 +1,7 @@
 import numpy as np
 import torch
 
-def test(model, test_loader, device, output_file='prediction.csv'):
+def test(model, test_loader, device, output_file='result/prediction.csv'):
     model.eval()
     pred = np.array([], dtype=np.int32)
 
