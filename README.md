@@ -5,7 +5,7 @@
 - [mkj3085003](https://github.com/mkj3085003)
 - [Kas2023](https://github.com/Kas2023)
 - [zx506](https://github.com/zx506)
-## ml_regression线性回归分析实验
+
 ### 运行说明：
   1. 使用env文件夹下的yaml文件创建conda环境:
   ```
@@ -24,4 +24,6 @@
   jupyter notebook
   ```
   7. 修改kernel为ml_regression
+## ml_regression线性回归分析实验
+## ml_classfication音素分类实验
 
